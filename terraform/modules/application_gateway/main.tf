@@ -58,14 +58,14 @@ resource "aws_alb_listener" "https" {
 
 resource "aws_alb_target_group" "training" {
   name        = "${var.environment}-training-tg"
-  port        = 80
+  port        = 443
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
   target_type = "ip"
 
   health_check {
     enabled             = true
-    interval            = 30
+    interval            = 3000
     path                = "/health"
     port                = "traffic-port"
     protocol            = "HTTP"
